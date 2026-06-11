@@ -1,0 +1,7 @@
+# .streamlit/config.toml
+[theme]
+primaryColor = "#38bdf8"       # Warna cyan untuk aksen tombol/garis aktif
+backgroundColor = "#0b0d1e00"    # Warna biru dongker sangat gelap untuk background utama
+secondaryBackgroundColor = "#171a33" # Warna latar belakang widget bawaan
+textColor = "#ffffff"          # Warna teks putih agar kontras dan terbaca
+font = "sans serif"
