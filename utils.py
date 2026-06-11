@@ -1,7 +1,7 @@
 import streamlit as st
 
 # ==========================================
-# INJEKSI CSS: TEMA DEEP BLUE GLASSMORPHISM
+# INJEKSI CSS: TEMA DEEP BLUE GLASSMORPHISM & CHATBOT FIX
 # ==========================================
 def inject_custom_css():
     st.markdown("""
@@ -117,6 +117,88 @@ def inject_custom_css():
     hr {
         border-color: rgba(255, 255, 255, 0.08) !important;
         margin: 30px 0 !important;
+    }
+
+    /* ==================================================
+       TAMBAHAN: FIX POSISI CHATBOT POPOVER DI KANAN BAWAH
+       ================================================== */
+    
+    /* Memaksa kontainer popover (tombol) ke sudut kanan bawah */
+    div[data-testid="stPopover"] {
+        position: fixed !important;
+        right: 40px !important; 
+        bottom: 40px !important;
+        left: auto !important; 
+        top: auto !important;
+        z-index: 9999999 !important;
+        display: block !important;
+    }
+
+    /* Desain Tombol Kapsul Obat */
+    div[data-testid="stPopover"] > div > button {
+        width: 65px !important;
+        height: 110px !important;
+        border-radius: 50px !important;
+        background: linear-gradient(to bottom, #ff3b30 50%, #ffffff 50%) !important;
+        border: 3px solid #2a2f55 !important;
+        box-shadow: 0 12px 30px rgba(255, 61, 0, 0.4), inset 0 -8px 10px rgba(0,0,0,0.15) !important;
+        cursor: pointer;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        animation: pillFloating 3.5s ease-in-out infinite !important;
+        opacity: 1 !important; 
+    }
+
+    div[data-testid="stPopover"] > div > button p {
+        font-size: 28px !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    div[data-testid="stPopover"] > div > button:active,
+    div[data-testid="stPopover"] > div > button:focus {
+        background: linear-gradient(to bottom, #ff3b30 50%, #ffffff 50%) !important;
+        border: 3px solid #38bdf8 !important;
+        color: inherit !important;
+    }
+
+    div[data-testid="stPopover"] > div > button:hover {
+        transform: scale(1.08) !important;
+        box-shadow: 0 20px 40px rgba(255, 59, 48, 0.6) !important;
+    }
+
+    @keyframes pillFloating {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(4deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Memaksa jendela isi chat tetap di sebelah kanan atas tombol */
+    div[data-testid="stPopoverBody"] {
+        position: fixed !important;
+        right: 40px !important;
+        bottom: 165px !important; 
+        left: auto !important;
+        top: auto !important;
+        transform: none !important; 
+        margin: 0 !important;
+        z-index: 9999998 !important;
+        width: 380px !important;
+        max-width: 90vw !important;
+        background-color: #12162e !important;
+        border: 2px solid #38bdf8 !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Custom kolom input teks di dalam chat */
+    .stChatInputContainer {
+        background-color: #0b0f19 !important;
+        border: 1px solid #2a2f55 !important;
+        border-radius: 10px !important;
     }
     </style>
     """, unsafe_allow_html=True)
